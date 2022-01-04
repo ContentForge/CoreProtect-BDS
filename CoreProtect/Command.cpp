@@ -33,6 +33,7 @@ void CoreProtect::execute(CommandOrigin const& ori, CommandOutput& outp) const
 	case Option::I:                                        // co i...
 		if (!pl->hasTag("inspect")) pl->addTag("inspect");
 		else pl->removeTag("inspect");
+		break;
 	case Option::ROLLBACK:                                 // co rollback...
 		pl->sendText("rollback?");
 		break;
