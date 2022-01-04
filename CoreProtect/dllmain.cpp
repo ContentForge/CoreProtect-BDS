@@ -1,8 +1,9 @@
 ﻿#include "pch.h"
-#pragma comment(lib, "../SDK/Lib/bedrock_server_api.lib")
-#pragma comment(lib, "../SDK/Lib/bedrock_server_var.lib")
-#pragma comment(lib, "../SDK/Lib/SymDBHelper.lib")
-#pragma comment(lib, "../SDK/Lib/LiteLoader.lib")
+#pragma comment(lib, "C:/Users/KocTu4eK/Desktop/SDK/Lib/bedrock_server_api.lib")
+#pragma comment(lib, "C:/Users/KocTu4eK/Desktop/SDK/Lib/bedrock_server_var.lib")
+#pragma comment(lib, "C:/Users/KocTu4eK/Desktop/SDK/Lib/SymDBHelper.lib")
+#pragma comment(lib, "C:/Users/KocTu4eK/Desktop/SDK/Lib/LiteLoader.lib")
+#pragma comment(lib, "C:/Users/KocTu4eK/Desktop/SDK/Lib/sqlite3-64.lib")
 
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved)
@@ -21,13 +22,13 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 }
 
 
-extern void PlugInit();
+extern void plugin();
 
 extern "C"
 {
     _declspec(dllexport) void onPostInit()
     {
         std::ios::sync_with_stdio(false);
-        PlugInit();
+        plugin();
     }
 }

@@ -6,11 +6,16 @@ enum CommandParameterOption;
 
 class CoreProtect : public Command
 {
-	enum class OPTION : int option;
-	enum class HELP_CMD : int help_cmd;
+	enum class Option : int option;
 
-	int time;
-	std::string action;
+	std::string helpParam;
+	std::string rollbackAction;
+
+	int rollbackTime;
+	int lookupPage;
+
+	bool isSetHelpParam;
+	bool isSetRollbackAction;
 
 public:
 	void execute(CommandOrigin const& ori, CommandOutput& outp) const override;

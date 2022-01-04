@@ -2,15 +2,12 @@
 #include "Events.h"
 #include "Command.h"
 
-Logger logger;
 
-
-void PlugInit()
+void plugin()
 {
-	Translation::load("./plugins/CoreProtect/langs/en_en.json");
-
-	Event::PlayerDestroyBlockEvent::subscribe(DestroyBlock);
-	Event::PlayerPlaceBlockEvent::subscribe(PlaceBlock);
+	Event::ServerStartedEvent::subscribe(serverStarted);
+	Event::PlayerDestroyBlockEvent::subscribe(destroyBlock);
+	Event::PlayerPlaceBlockEvent::subscribe(placeBlock);
 
 	Event::RegCmdEvent::subscribe([](Event::RegCmdEvent ev)
 		{

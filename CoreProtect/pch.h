@@ -13,5 +13,7 @@
 #include <RegCommandAPI.h>
 #include <LoggerAPI.h>
 #include <TranslationAPI.h>
+#include <SQLite3.h>
+#include <Utils/FileHelper.h>
 
 #endif //PCH_H
