@@ -13,15 +13,27 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Исходные файлы\Listener">
+      <UniqueIdentifier>{b7972a86-91a1-475d-ab2d-ecb2ed0e5e5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Listener\Block">
+      <UniqueIdentifier>{8eaefff1-55ce-4fdb-b1f9-d746cc7be607}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Command">
+      <UniqueIdentifier>{5424859f-4313-42f6-8872-afb929f6a31f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Events.h">
+    <ClInclude Include="Utils.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="SQLite.h">
+    <ClInclude Include="Listener.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,17 +47,32 @@
     <ClCompile Include="Plugin.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Events.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Command.h">
       <Filter>Файлы заголовков</Filter>
     </ClCompile>
-    <ClCompile Include="Command.cpp">
+    <ClCompile Include="Utils.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="SQLite.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="Command\CommandExecute.cpp">
+      <Filter>Исходные файлы\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Command\CommandInspect.cpp">
+      <Filter>Исходные файлы\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Command\LookupCommand.cpp">
+      <Filter>Исходные файлы\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Command\SetupCommand.cpp">
+      <Filter>Исходные файлы\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Listener\Block\PlayerDestroyBlock.cpp">
+      <Filter>Исходные файлы\Listener\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="Listener\Block\PlayerPlaceBlock.cpp">
+      <Filter>Исходные файлы\Listener\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="Listener\PlayerJoin.cpp">
+      <Filter>Исходные файлы\Listener</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

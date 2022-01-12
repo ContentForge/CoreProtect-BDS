@@ -13,7 +13,8 @@
 #include <RegCommandAPI.h>
 #include <LoggerAPI.h>
 #include <TranslationAPI.h>
-#include <SQLite3.h>
 #include <Utils/FileHelper.h>
+#include <MC/BlockPos.hpp>
+#include "third-party/SQLiteCpp/SQLiteCpp.h"
 
 #endif //PCH_H

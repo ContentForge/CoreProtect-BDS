@@ -1,18 +1,24 @@
-#include "pch.h"
-#include "Events.h"
+﻿#include "pch.h"
+#include "Dependencies.h"
+#include "Listener.h"
 #include "Command.h"
+#include "Utils.h"
 
 
 void plugin()
 {
-	Event::ServerStartedEvent::subscribe(serverStarted);
-	Event::PlayerDestroyBlockEvent::subscribe(destroyBlock);
-	Event::PlayerPlaceBlockEvent::subscribe(placeBlock);
+	CreateDirs("./plugins/CoreProtect/");
+	Translation::load("./plugins/CoreProtect/language.json");
 
-	Event::RegCmdEvent::subscribe([](Event::RegCmdEvent ev)
-		{
-			CoreProtect::setup(ev.mCommandRegistry);
-			return true;
-		}
-	);
+	Utils::sqlExecute("CREATE TABLE IF NOT EXISTS co_block(id INTEGER PRIMARY KEY AUTOINCREMENT, user INT, xyz VARCHAR(255), block VARCHAR(255), action INT, time INT);");
+	Utils::sqlExecute("CREATE TABLE IF NOT EXISTS co_user(id INTEGER PRIMARY KEY AUTOINCREMENT, nick VARCHAR(255), inspect INT DEFAULT 0, l_xyz VARCHAR(255) DEFAULT '-', l_id INT DEFAULT -1, l_idn INT DEFAULT -1, l_pages INT DEFAULT -1, l_page INT DEFAULT 1);");
+
+	Event::PlayerPreJoinEvent::subscribe(Listener::playerPreJoin);           // Listener/PlayerPreJoin
+	Event::PlayerPlaceBlockEvent::subscribe(Listener::playerPlaceBlock);     // Listener/Block/PlayerPlaceBlock
+	Event::PlayerDestroyBlockEvent::subscribe(Listener::playerDestroyBlock); // Listener/Block/PlayerDestroyBlock
+
+	Event::RegCmdEvent::subscribe([](Event::RegCmdEvent ev) {
+		CoreProtect::setup(ev.mCommandRegistry);
+		return true;
+	});
 }

@@ -3,7 +3,8 @@
 #pragma comment(lib, "C:/Users/KocTu4eK/Desktop/SDK/Lib/bedrock_server_var.lib")
 #pragma comment(lib, "C:/Users/KocTu4eK/Desktop/SDK/Lib/SymDBHelper.lib")
 #pragma comment(lib, "C:/Users/KocTu4eK/Desktop/SDK/Lib/LiteLoader.lib")
-#pragma comment(lib, "C:/Users/KocTu4eK/Desktop/SDK/Lib/sqlite3-64.lib")
+#pragma comment(lib, "C:/Users/KocTu4eK/Desktop/SDK/Lib/sqlite3.lib")
+#pragma comment(lib, "C:/Users/KocTu4eK/Desktop/SDK/Lib/SQLiteCpp.lib")
 
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved)
