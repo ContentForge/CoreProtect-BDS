@@ -1,5 +1,5 @@
 #include "../pch.h"
-#include "../Command.h"
+#include "../command.h"
 
 
 void CoreProtect::inspectCommand(ServerPlayer* pl) const

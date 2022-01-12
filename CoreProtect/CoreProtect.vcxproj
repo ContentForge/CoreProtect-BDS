@@ -161,35 +161,35 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Listener.h" />
-    <ClInclude Include="Logger.h" />
+    <ClInclude Include="dependencies.h" />
+    <ClInclude Include="listener.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="Utils.h" />
+    <ClInclude Include="utils.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Command.h" />
-    <ClCompile Include="Command\CommandExecute.cpp">
+    <ClCompile Include="command.h" />
+    <ClCompile Include="Command\execute_command.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../pch.h</PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="Command\CommandInspect.cpp">
+    <ClCompile Include="Command\inspect_command.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../pch.h</PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="Command\LookupCommand.cpp">
+    <ClCompile Include="Command\lookup_command.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../pch.h</PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="Command\SetupCommand.cpp">
+    <ClCompile Include="Command\setup_command.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="Listener\Block\PlayerDestroyBlock.cpp">
+    <ClCompile Include="Listener\Block\destroy_block.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../../pch.h</PrecompiledHeaderFile>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Listener\Block\PlayerPlaceBlock.cpp">
+    <ClCompile Include="Listener\Block\place_block.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../../pch.h</PrecompiledHeaderFile>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Listener\PlayerJoin.cpp">
+    <ClCompile Include="Listener\player_pre_join.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="pch.cpp">
@@ -198,8 +198,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Plugin.cpp" />
-    <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="plugin.cpp" />
+    <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

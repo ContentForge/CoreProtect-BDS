@@ -1,7 +1,7 @@
 #pragma once
 #include "pch.h"
-#include "Dependencies.h"
-#include "Utils.h"
+#include "dependencies.h"
+#include "utils.h"
 
 #define DEFAULT_COMMAND_FLAGS { (CommandFlagValue)0 }, { (CommandFlagValue)0x80 }
 

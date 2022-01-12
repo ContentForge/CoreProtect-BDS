@@ -1,8 +1,8 @@
 ﻿#include "pch.h"
-#include "Dependencies.h"
-#include "Listener.h"
-#include "Command.h"
-#include "Utils.h"
+#include "dependencies.h"
+#include "listener.h"
+#include "command.h"
+#include "utils.h"
 
 
 void plugin()

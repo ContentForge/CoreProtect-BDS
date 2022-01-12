@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "Utils.h"
+#include "utils.h"
 
 
 void Utils::sqlExecute(const char* query, std::function<void(SQLite::Statement&)> callback)

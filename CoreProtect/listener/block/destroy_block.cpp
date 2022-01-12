@@ -1,13 +1,14 @@
 ﻿#include "../../pch.h"
-#include "../../Listener.h"
+#include "../../listener.h"
 
 
-bool Listener::playerPlaceBlock(Event::PlayerPlaceBlockEvent ev)
+bool Listener::playerDestroyBlock(Event::PlayerDestroyBlockEvent ev)
 {
 	Player* pl = ev.mPlayer;
 	Block* bl = ev.mBlockInstance.getBlock();
+	BlockInstance bli = ev.mBlockInstance;
 	BlockPos pos = ev.mBlockInstance.getPosition();
-	std::string coords = "x" + std::to_string(pos.x) + "/y" + std::to_string(pos.y) + "/z" + std::to_string(pos.z); // «x0/y0/z0» (co_block.xyz)
+	std::string coords = "x" + std::to_string(pos.x) + "/y" + std::to_string(pos.y) + "/z" + std::to_string(pos.z); // «x0/y0/z0» (blocks.cr)
 	int isInspector = -1;
 	std::string userId;
 
@@ -19,7 +20,7 @@ bool Listener::playerPlaceBlock(Event::PlayerPlaceBlockEvent ev)
 
 	if (!isInspector)
 	{
-		Utils::sqlExecute(std::string("INSERT INTO co_block(user, xyz, block, action) VALUES('" + userId + "', '" + coords + "', '" + bl->getTypeName().erase(0, 10) + "', 1);").c_str());
+		Utils::sqlExecute(std::string("INSERT INTO co_block(user, xyz, block, action) VALUES('" + userId + "', '" + coords + "', '" + bl->getTypeName().erase(0, 10) + "', 0);").c_str());
 		return true;
 	}
 	else
@@ -32,7 +33,7 @@ bool Listener::playerPlaceBlock(Event::PlayerPlaceBlockEvent ev)
 				int rowCount = 0;
 				do rowCount++; while (sm.executeStep());
 				int pageCount = Utils::pagesCalculate(rowCount); // 25 rows = 4 pages (3 pages + 1 (remainder))
-				
+
 				Utils::sqlExecute(std::string("SELECT * FROM co_block WHERE xyz = '" + coords + "' AND id <= " + std::to_string(descId) + " ORDER BY id DESC LIMIT 7;").c_str(), [&](SQLite::Statement& sm) {
 					if (pageCount == 1)
 					{
