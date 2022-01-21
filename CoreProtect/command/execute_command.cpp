@@ -14,16 +14,11 @@ void CoreProtect::execute(CommandOrigin const& ori, CommandOutput& outp) const
 	case Option::INSPECT:  // co inspect...
 		inspectCommand(pl);
 		break;
-	case Option::I:        // co i...
-		inspectCommand(pl);
-		break;
 	case Option::ROLLBACK: // co rollback...
 		pl->sendText("rollback?");
 		break;
 	case Option::LOOKUP:   // co lookup...
-		break;
-	case Option::L:        // co l...
-		lookupCommand(pl);
+		isSetLookupPage ? lookupCommand(pl) : (void)0;
 		break;
 	}
 }
