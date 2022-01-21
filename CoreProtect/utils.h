@@ -8,5 +8,5 @@ namespace Utils
 
 	void sqlExecute(const char*, std::function<void(SQLite::Statement&)> = NULL);
 	int pagesCalculate(int);
-	float getHoursAgo(float hours);
+	std::string timestampFormat(std::chrono::system_clock const& sc, __time64_t const timestamp);
 }
