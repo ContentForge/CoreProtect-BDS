@@ -8,27 +8,35 @@
 
 class CoreProtect : public Command
 {
-	enum class Option : int
-	{
-		HELP = 1,
-		INSPECT = 2,
-		I = 3,
-		ROLLBACK = 4,
-		LOOKUP = 5,
-		L = 6
-	} option;
+    enum class Option : int
+    {
+        HELP = 1,
+        INSPECT = 2,
+        ROLLBACK = 3,
+        LOOKUP = 4,
+    } option;
 
-	std::string helpParam;
-	std::string rollbackAction;
-	int rollbackTime;
-	int lookupPage;
-	bool isSetHelpParam;
-	bool isSetRollbackAction;
+    ///// Lookup & Rollback /////
+    CommandSelector<Player> user; // <>
+    std::string time;	          // <>
+    int radius;			  // <>
+    std::string action;		  // []
+    std::string include;	  // []
+    std::string exclude;          // []
+    bool isSetAction;		  // a?
+    bool isSetInclude;	          // i?
+    bool isSetExclude;            // e?
 
-	void inspectCommand(ServerPlayer*) const;
-	void lookupCommand(ServerPlayer*) const;
+    //////// Other ///////
+    std::string helpParam; // []
+    int lookupPage;	   // <>
+    bool isSetHelpParam;   // h?
+    bool isSetLookupPage;  // p?
+
+    void inspectCommand(ServerPlayer*) const;
+    void lookupCommand(ServerPlayer*) const;
 
 public:
-	void execute(CommandOrigin const& ori, CommandOutput& outp) const override;
-	static void setup(CommandRegistry* r);
+    void execute(CommandOrigin const& ori, CommandOutput& outp) const override;
+    static void setup(CommandRegistry* r);
 };
