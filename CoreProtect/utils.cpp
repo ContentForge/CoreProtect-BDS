@@ -20,15 +20,43 @@ void Utils::sqlExecute(const char* query, std::function<void(SQLite::Statement&)
 
 int Utils::pagesCalculate(int maxId)
 {
-	int rem = maxId % 7;
-	int pageCount = (maxId - rem) / 7;
-	if (rem) pageCount += 1;
+	int remainder = maxId % 7;
+	int pageCount = (maxId - remainder) / 7;
+	if (remainder) pageCount += 1;
 	return pageCount;
 }
 
 
-float Utils::getHoursAgo(float hours)
+std::string Utils::timestampFormat(std::chrono::system_clock const& sc, __time64_t const timestamp)
 {
-	int temp = hours * (10 * 10);
-	return (float)temp / (10 * 10);
+	int difference = (int)(sc.to_time_t(sc.now()) - timestamp);
+
+	if (difference < 60) return std::to_string((int)difference) + "/s";
+	else if (difference < 3600)
+	{
+		if ((float)((int)(difference / 60.0 * 100)) / 100 == (int)(difference / 60)) return std::to_string((int)(difference / 60)) + "/m";
+		else
+		{
+			std::string minutes = std::to_string(difference / 60.0);
+			return minutes.erase(minutes.size() - (minutes.size() - (minutes.find(".") + 1)) + 2, 4) + "/m";
+		}
+	}
+	else if (difference < 86400)
+	{
+		if ((float)((int)(difference / 3600.0 * 100)) / 100 == (int)(difference / 3600)) return std::to_string((int)(difference / 3600)) + "/h";
+		else
+		{
+			std::string hours = std::to_string(difference / 3600.0);
+			return hours.erase(hours.size() - (hours.size() - (hours.find(".") + 1)) + 2, 4) + "/h";
+		}
+	}
+	else
+	{
+		if ((float)((int)(difference / 86400.0 * 100)) / 100 == (int)(difference / 86400)) return std::to_string((int)(difference / 86400)) + "/d";
+		else
+		{
+			std::string hours = std::to_string(difference / 86400.0);
+			return hours.erase(hours.size() - (hours.size() - (hours.find(".") + 1)) + 2, 4) + "/d";
+		}
+	}
 }
