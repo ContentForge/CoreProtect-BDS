@@ -14,7 +14,7 @@ void CoreProtect::inspectCommand(ServerPlayer* pl) const
 			}
 			else
 			{
-				Utils::sqlExecute(std::string("UPDATE co_user SET inspect = 0, l_xyz = '-', l_id = -1, l_idn = -1, l_pages = -1, l_page = 1 WHERE nick = '" + pl->getName() + "';").c_str());
+				Utils::sqlExecute(std::string("UPDATE co_user SET inspect = 0, l_xyz = '-' WHERE nick = '" + pl->getName() + "';").c_str());
 				pl->sendText(tr("INSPECTOR_TOGGLED", "disabled"));
 			}
 		}
